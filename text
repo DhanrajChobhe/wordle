@@ -1,0 +1,21 @@
+1. install all libraries : nextui-org and framer-motion
+2. make changes in tailwind.config.ts and providers.tsx and layout.tsx
+3. install prisma, init datasource provider sqlite, fill schema.prisma, prisma migrate dev
+4. Oauth : install @auth/core@0.18.1 @auth/prisma-adapter@1.0.6 next-auth@5.0.0-beta.3
+5. register your appllication in github oauth, copy client id, client secret
+6. create auth.ts, actions>index.ts, app/api/auth/[...nextauth]/route.ts
+7. upfront design -> path helpers, create routing folders and page.tsx file
+8. Identify the places where data changes in your app and make empty server actions for each of those
+9. add comments on what paths you will need to revalidate for each server action.
+
+10. static and dynamic routes - caching
+11. dynamic : cookies, export const dynamic = 'force-dynamic', revalidate=0, fetch('...', {next:{revalidate:0}}), using a dynamic route /snippets/[id]/page.tsx
+12. we can make dynamic page static by using generate static frames function.
+13. auth is causing a route to be dynamic so we can move it to a client component and use that component in our page because no access to cookies === static page.
+
+BTW , npm run dev (and) npm run build.
+
+14. for validation use zod library. create a schema using z.object and use safeParse to validate.
+15. hooks can only be used in client component.
+
+16. request memoization : convert the function in arrow function and surround it with cache() used to avoid duplicatin function calls with same arguments.
